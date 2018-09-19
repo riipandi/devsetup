@@ -1,5 +1,7 @@
 #!/bin/bash
 
+if [[ $EUID -ne 0 ]]; then echo -e 'This script must be run as root' ; exit 1 ; fi
+
 country=`curl -s ipinfo.io | grep country | awk -F":" '{print $2}' | cut -d '"' -f2`
 
 srcfile="/etc/apt/sources.list"
@@ -19,3 +21,5 @@ else
   echo "deb http://azure.archive.ubuntu.com/ubuntu `lsb_release -cs`-security main restricted universe multiverse" >> $srcfile
   echo "deb http://azure.archive.ubuntu.com/ubuntu `lsb_release -cs`-backports main restricted universe multiverse" >> $srcfile
 fi
+
+echo 'Repository has been configured'

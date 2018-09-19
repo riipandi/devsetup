@@ -1,5 +1,7 @@
 #!/bin/bash
 
+if [[ $EUID -ne 0 ]]; then echo -e 'This script must be run as root' ; exit 1 ; fi
+
 country=`curl -s ipinfo.io | grep country | awk -F":" '{print $2}' | cut -d '"' -f2`
 
 srcfile="/etc/apt/sources.list"
@@ -16,3 +18,5 @@ else
   echo "deb http://debian-archive.trafficmanager.net/debian `lsb_release -cs`-updates main contrib non-free" >> $srcfile
   echo "deb http://debian-archive.trafficmanager.net/debian-security `lsb_release -cs`/updates main contrib non-free" >> $srcfile
 fi
+
+echo 'Repository has been configured'
