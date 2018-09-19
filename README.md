@@ -1,2 +1,3 @@
-# dotfiles
-All my personal Linux configuration files and scripts.
+# Aris Ripandi dotfiles
+
+All my personal configuration files and scripts.
