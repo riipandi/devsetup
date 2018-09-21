@@ -128,6 +128,7 @@ sane-backends \
 sane-backends-drivers-scanners \
 sane-backends-libs \
 scl-utils \
+screen \
 screenfetch \
 simple-mtpfs \
 simple-scan \
@@ -141,7 +142,8 @@ xdg-desktop-portal \
 xdg-desktop-portal-gtk \
 xdg-user-dirs \
 xdg-user-dirs-gtk \
-xmlstarlet
+xmlstarlet \
+xsel
 
 # Budgie Packages
 dnf -y install \
@@ -162,10 +164,36 @@ budgie-pixel-saver-applet \
 budgie-screenshot-applet \
 lightdm \
 light-locker \
+plymouth-plugin-script \
 pop-gtk-theme \
 pop-icon-theme \
 tilix \
 tuned
+
+# Extra Packages
+dnf -y install \
+android-tools \
+asciinema \
+audacious \
+audacity \
+filezilla \
+geary \
+libmfx \
+nmap-frontend \
+nomacs \
+telegram-desktop \
+vokoscreen \
+wireshark-gtk
+
+dnf -y remove \
+fedora-release-notes \
+gnome-abrt \
+im-chooser \
+opensc \
+setroubleshoot \
+system-config-language \
+system-config-users \
+yelp
 
 # Basic Configuration
 plymouth-set-default-theme -R charge
@@ -177,6 +205,16 @@ tuned-adm profile powersave
 sed -i "s|\("^Out" * *\).*|\1\${HOME}/Documents|" /etc/cups/cups-pdf.conf
 perl -pi -e 's#(.*wheel.*ALL=)(.*)#${1}(ALL) NOPASSWD:ALL#' /etc/sudoers
 perl -pi -e 's#(SELINUX=)(.*)#${1}permissive#' /etc/selinux/config
+
+# IPv4 Forward + Disable IPv6
+crudini --set /etc/sysctl.d/70-disable-ipv6.conf '' 'net.ipv6.conf.all.disable_ipv6' '1'
+crudini --set /etc/sysctl.d/70-disable-ipv6.conf '' 'net.ipv6.conf.default.disable_ipv6' '1'
+crudini --set /etc/sysctl.d/70-disable-ipv6.conf '' 'net.ipv6.conf.lo.disable_ipv6' '1'
+crudini --set /etc/sysctl.conf '' 'net.ipv6.conf.all.disable_ipv6'     '1'
+crudini --set /etc/sysctl.conf '' 'net.ipv6.conf.default.disable_ipv6' '1'
+crudini --set /etc/sysctl.conf '' 'net.ipv6.conf.lo.disable_ipv6'      '1'
+crudini --set /etc/sysctl.conf '' 'net.ipv4.ip_forward' '1'
+crudini --set /etc/sysctl.conf '' 'vm.swappiness'       '1'
 
 # GRUB Configuration
 crudini --set /etc/default/grub '' 'GRUB_DISABLE_RECOVERY' 'true'
