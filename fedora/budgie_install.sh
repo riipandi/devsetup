@@ -143,6 +143,7 @@ xdg-desktop-portal-gtk \
 xdg-user-dirs \
 xdg-user-dirs-gtk \
 xmlstarlet \
+xclip \
 xsel
 
 # Budgie Packages
