@@ -1,4 +1,4 @@
-# Personal dotfiles
+# Aris Ripandi Personal dotfiles
 
 All my personal configuration files and scripts.
 
