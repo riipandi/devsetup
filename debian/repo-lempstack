@@ -11,4 +11,11 @@ deb https://deb.nodesource.com/node_8.x `lsb_release -cs` main
 deb https://packages.sury.org/php/ `lsb_release -cs` main
 EOF
 
+apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C74CD1D8 #MariaDB
+curl -sS https://www.postgresql.org/media/keys/ACCC4CF8.asc   | apt-key add -
+curl -sS https://nginx.org/keys/nginx_signing.key             | apt-key add -
+curl -sS https://packages.sury.org/php/apt.gpg                | apt-key add -
+curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+curl -sS https://repo.powerdns.com/FD380FBB-pub.asc           | apt-key add -
+
 echo 'Repository has been configured'
