@@ -18,4 +18,6 @@ curl -sS https://packages.sury.org/php/apt.gpg                | apt-key add -
 curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 curl -sS https://repo.powerdns.com/FD380FBB-pub.asc           | apt-key add -
 
+echo -e "Package: pdns-*\nPin: origin repo.powerdns.com\nPin-Priority: 600" /etc/apt/preferences.d/pdns
+
 echo 'Repository has been configured'
