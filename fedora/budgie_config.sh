@@ -11,6 +11,7 @@ gsettings set org.gnome.desktop.interface font-name           "'Fira Sans Book 1
 gsettings set org.gnome.desktop.wm.preferences titlebar-font  "'Fira Sans SemiBold 10'"   # Cantarell Bold 10
 gsettings set org.gnome.desktop.interface document-font-name  "'Roboto Slab Regular 11'"  # Sans Regular 10
 gsettings set org.gnome.desktop.interface monospace-font-name "'Fira Mono Regular 11'"    # Monospace Regular 10
+cat $pwddir/budgie.conf | dconf load /com/solus-project/
 cat $pwddir/tilix.conf | dconf load /com/gexperts/Tilix/
 fc-cache -fv
 
