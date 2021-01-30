@@ -27,3 +27,6 @@ Available Commands:
 - Mathias Bynens and his [dotfiles repository](https://github.com/mathiasbynens/dotfiles)
 - Nicolas Gallaghar and his [dotfiles repository](https://github.com/necolas/dotfiles)
 - Trevor Miller and his [dotfiles repository](https://github.com/trevordmiller/dotfiles)
+
+## License
+MIT: [https://aris.mit-license.org/](https://aris.mit-license.org/)
